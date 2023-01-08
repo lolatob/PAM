@@ -1,5 +1,5 @@
 # PAM
-Projet de programmation d'application mobile M2 MIAGE
+Projet de programmation d'application mobile M2 MIAGE GILLIARD Paul, TOBLER Lola
 
 Vous trouverez une vidéo de présentation de notre projet via le lien suivant (youtube) : https://youtu.be/NZ5pikHFxtI
 
