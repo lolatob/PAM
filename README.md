@@ -33,7 +33,8 @@ Elements pas réussis du projet
 - Compteur de grenouilles capturées
 - Utilisation de l'orientation (nord sud) pour faire apparaitre ou non la grenouille sur l'appareil photo
 
-Autre 
+
+
 Dans l'état actuel du projet, au lancement de l'application deux coordonnées GPS de grenouilles sont générées (Les deux points bleus sur la map). La première grenouille est assez proche pour être capturée c'est pour cela que le bouton de la caméra est enable. La seconde est trop loin. Une fois que nous avons capturé la première, cela supprime des coordonées stockées la première grenouille (c'est pour cela qu'elle n'apparait plus sur la Map) et nous nous retrouvons uniquement avec la seconde grenouille qui est trop loin pour être capturée.
 A noter que vous pouvez re générer le fichier de coordonées avec les deux grenouilles simplement en quittant complètement l'application et en la relançant.
 Ces coordonnées GPS sont établies en fonction de votre position actuelle en leur ajoutant une petite valeur de latitude et de longitude chacune. 
