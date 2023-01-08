@@ -52,7 +52,6 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
     private Bitmap mOverlayBitmap;
     private boolean mIsCameraPreviewing = false;
     private final int UPDATE_CAMERA_IMAGE = 1;
-
     private float mDeviceOrientation;
     private float mOverlayRotation;
     private SensorManager mSensorManager;
@@ -69,6 +68,10 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         }
     });
 
+    /**
+     Méthode appelée lors de la création de l'activité de la caméra.
+     Initialise les éléments de l'interface utilisateur et instancie les objets nécessaires au fonctionnement de la caméra.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,9 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         mOverlayBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pngegg);
     }
 
+    /**
+     Méthode qui redémarre la prévisualisation de la caméra lorsque l'application est mise en arrière-plan puis réactivée.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -96,6 +102,10 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         startCameraPreview();
     }
 
+    /**
+     Méthode appelée lorsque l'application passe en pause.
+     Arrête la prévisualisation de la caméra et désactive le listener de capteur de boussole.
+     */
     @Override
     protected void onPause() {
         stopCameraPreview();
@@ -105,6 +115,9 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         super.onPause();
     }
 
+    /**
+     * Lancement de l'aperçu de la caméra
+     */
     private void startCameraPreview() {
         if (!mIsCameraPreviewing) {
             mCamera = Camera.open();
@@ -121,6 +134,9 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         }
     }
 
+    /**
+     * Arrête la prévisualisation de la caméra
+     */
     private void stopCameraPreview() {
         if (mIsCameraPreviewing) {
             mIsCameraPreviewing = false;
@@ -131,22 +147,45 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         }
     }
 
+    /**
+     * Cette méthode est appelée lorsque la surface de prévisualisation de la caméra est créée. Elle démarre la prévisualisation de la caméra en ouvrant la caméra,
+     * en définissant son orientation et en configurant son affichage et son rappel de prévisualisation.
+     * @param surfaceHolder
+     */
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         startCameraPreview();
     }
 
+    /**
+     * "Méthode exécutée lorsque les dimensions de la SurfaceView associée à la prévisualisation de la caméra ont changé"
+     * @param surfaceHolder
+     * @param i
+     * @param i1
+     * @param i2
+     */
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
         stopCameraPreview();
         startCameraPreview();
     }
 
+    /**
+     Méthode appelée lorsque la surface de prévisualisation de la caméra est détruite
+     Arrête la prévisualisation de la caméra
+     */
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         stopCameraPreview();
     }
 
+    /**
+     *Fonction pour mettre à jour l'image de la caméra avec l'image de surimpression en fonction de l'orientation de l'appareil :
+     * Cette fonction est appelée chaque fois que des données de prévisualisation sont disponibles de la caméra. Elle vérifie d'abord si
+     * l'angle de rotation de l'appareil est compris entre 0 et 45 ou entre 315 et 360 (c'est-à-dire si l'appareil est orienté vers le nord).
+     * Si c'est le cas, elle convertit les données de la caméra en une image Bitmap et la combine avec l'image de surimpression.
+     * Sinon, elle ne combine pas les images et ne met à jour que l'image de la caméra. Enfin, elle utilise un objet Canvas pour dessiner l'image combinée sur l'écran.
+     */
     @Override
     public void onPreviewFrame(final byte[] data, final Camera camera) {
         // Vérifier si l'angle de rotation est compris entre 0 et 45 ou entre 315 et 360
@@ -206,7 +245,18 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         }
     }
 
-
+    /**
+     * Fonction pour superposer deux images Bitmap
+     *
+     * Cette fonction prend en entrée deux images Bitmap, une image de la caméra et une image de surimpression,
+     * et retourne une nouvelle image Bitmap qui est la combinaison des deux images en superposition.
+     * La fonction crée un nouveau bitmap de la taille de l'image de la caméra, dessine l'image de la caméra sur ce bitmap,
+     * puis dessine l'image de surimpression sur ce bitmap en utilisant une translation pour déplacer l'image de surimpression vers la position souhaitée.
+     * La fonction retourne finalement le bitmap combiné.
+     * @param cameraBitmap
+     * @param overlayBitmap
+     * @return
+     */
     private Bitmap combineImages(Bitmap cameraBitmap, Bitmap overlayBitmap) {
         // Créer un nouveau bitmap de la taille de l'image de la caméra
        Bitmap combinedBitmap = Bitmap.createBitmap(cameraBitmap.getWidth(), cameraBitmap.getHeight(), cameraBitmap.getConfig());
@@ -223,6 +273,10 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         return cameraBitmap;
     }
 
+    /**
+     * "Mise à jour de l'angle de rotation de l'image de surimpression en fonction de l'orientation de l'appareil"
+     * @param event
+     */
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
@@ -237,6 +291,11 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
 
     }
 
+    /**
+     * Fonction pour capturer un sprite dans l'application, renvoie ensuite à la map avec un extra dictant le comportement
+     * à suivre.
+     * @param view
+     */
     public void CatchSprite(View view) {
 
         // Retourner sur la vue activity_maps
