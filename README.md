@@ -1,6 +1,9 @@
 # PAM
 Projet de programmation d'application mobile M2 MIAGE
 
+Vous trouverez une vidéo de présentation de notre projet via le lien suivant (youtube) : https://youtu.be/NZ5pikHFxtI
+
+
 L'objectif de ce projet est de créer une application-jeu avec Android Studio. Le but de cette application-jeu est de pouvoir se déplacer sur une carte (géolocalisation) afin d'attraper des objets. Lorsque l'utilisateur s'approche d'un objet, représenter par un point sur la carte, il pourra accèder à sa caméra afin de visualiser l'objet dans son environnement. Il pourra ensuite capture l'objet, ce qui le fera disparaitre de la carte. 
 
 Synopsis : 
