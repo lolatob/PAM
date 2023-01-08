@@ -13,8 +13,8 @@ Pour capturer une grenouille, suivez simplement ces étapes:
 Alors, qu'attendez-vous? Sortez et capturez toutes les grenouilles de votre quartier!
 
 
-/ PREREQUIS, INSTALLATION, DEPLOIEMENT
-  Librairies, drivers
+INSTALLATION
+Pour utiliser l'application sur votre téléphone, vous pouvez installer dans votre téléphone le fichier APK déposé dans le Github.
 
 
 Elements réussis du projet
@@ -23,13 +23,14 @@ Elements réussis du projet
 - Placer des points représentant l'emplacement des grenouilles
 - Mise en place d'un bouton "caméra" sur la map qui permet d'accèder à l'appareil photo
 - Supperposition de l'image de la grenouille avec l'image de l'appareil photo
-
-
+- Suppression de la grenouille sur la maps une fois qu'elle a été prise en photo
+- Activation du bouton "Caméra" disponible uniquement lorsque l'utilisateur est proche de la grenouille
+ 
 Elements pas réussis du projet
 - Compteur de grenouilles capturées
 - Utilisation de l'orientation (nord sud) pour faire apparaitre ou non la grenouille sur l'appareil photo
 
-
-Autre : 
-- Suppression de la grenouille sur la maps une foit qu'elle a été prise en photo
-- Activation du bouton "Caméra" disponible uniquement lorsque l'utilisateur est proche de la grenouille
+Autre 
+Dans l'état actuel du projet, au lancement de l'application deux coordonnées GPS de grenouilles sont générées (Les deux points bleus sur la map). La première grenouille est assez proche pour être capturée c'est pour cela que le bouton de la caméra est enable. La seconde est trop loin. Une fois que nous avons capturé la première, cela supprime des coordonées stockées la première grenouille (c'est pour cela qu'elle n'apparait plus sur la Map) et nous nous retrouvons uniquement avec la seconde grenouille qui est trop loin pour être capturée.
+A noter que vous pouvez re générer le fichier de coordonées avec les deux grenouilles simplement en quittant complètement l'application et en la relançant.
+Ces coordonnées GPS sont établies en fonction de votre position actuelle en leur ajoutant une petite valeur de latitude et de longitude chacune. 
