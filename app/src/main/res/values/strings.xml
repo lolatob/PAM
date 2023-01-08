@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Frog Go</string>
+    <string name="title_activity_maps">Frog Go</string>
+    <string name="button_play">Play</string>
+</resources>
